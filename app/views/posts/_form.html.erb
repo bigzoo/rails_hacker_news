@@ -1,0 +1,15 @@
+<%= render "layouts/errors", :object => @post %>
+
+
+<%= form_for @post do |f| %>
+<%= f.label :link %>
+<%= f.text_field :link %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<%= f.select(:user_id) do %>
+  <% User.all.each do |usr| %>
+    <%= content_tag(:option, usr.username, value: usr.id) %>
+  <% end %>
+<% end %>
+<%= f.submit %>
+<% end %>
