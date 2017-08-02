@@ -1,0 +1,17 @@
+<h1>Users</h1>
+
+<% if @users.any? %>
+<ul>
+<% @users.each do |user| %>
+<li>
+  <p><%= link_to user.username, user_path(user) %></p>
+</li>
+<% end %>
+</ul>
+<% else %>
+<h1>No users added yet!</h1>
+<% end %>
+
+<hr>
+<p><%= link_to "New Post", new_post_path%></p>
+<p><%= link_to "New User", new_user_path%>
