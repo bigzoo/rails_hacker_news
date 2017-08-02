@@ -9,6 +9,12 @@
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <nav>
+      <li><%= link_to "Posts Page", '/' %></li>
+      <li><%= link_to "Users Page", users_path %></li>
+    </nav>
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+  <%= yield %>
+</body>
 </html>
