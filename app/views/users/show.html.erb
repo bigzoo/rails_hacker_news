@@ -1,0 +1,9 @@
+<h1>Viewing <%= @user.username%></h1>
+
+First name : <%= @user.first_name %>
+Last name : <%= @user.last_name %>
+
+<%= link_to 'Edit User', edit_user_path(@user)  %>
+<%= link_to 'Delete User', user_path(@user),
+                          :data => {:confirm => "Are you sure?",
+                                         :method => "delete"}  %>
