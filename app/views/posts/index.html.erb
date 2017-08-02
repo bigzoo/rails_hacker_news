@@ -1,0 +1,17 @@
+<h1>Hacker News</h1>
+<% if @posts.any? %>
+<ul>
+  <% @posts.each do |post|%>
+  <li>
+   <a target="_blank" href="<%= post.link%>"><%= post.link%></a> | <%= link_to post.description, post_path(post) %> | by <%= link_to post.user.username, user_path(post.user) %>
+  </li>
+
+<% end %>
+</ul>
+<%else%>
+<h1>No posts yet</h1>
+<%end%>
+
+<hr>
+<p><%= link_to "New Post", new_post_path%></p>
+<p><%= link_to "New User", new_user_path%></p>
