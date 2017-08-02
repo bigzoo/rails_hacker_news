@@ -1,0 +1,22 @@
+<h3><a target="_blank" href="<%= @post.link%>"><%=@post.link%></a></h3>
+<h1><%= @post.description%></h1>
+<% if @post.comments.any?%>
+<ul>
+
+<% @post.comments.each do |comment| %>
+<li>
+  <%=comment.description%> | by <%= link_to comment.user.username, user_path(comment.user)%> | Votes: <%= comment.votes%>
+<% end %>
+</ul>
+<% else %>
+<h3>This Post has no comments yet!</h3>
+<small>Post One Now!</small>
+<% end %>
+<p><%= link_to 'New Comment', new_post_comment_path(@post)%></p>
+
+<hr>
+<p><%= link_to 'Edit Post', edit_post_path(@post)%></p>
+<p><%= link_to 'Delete Post', post_path(@post),
+                          :data => {:confirm => "Are you sure?",
+                                         :method => "delete"}
+                                         %></p>
