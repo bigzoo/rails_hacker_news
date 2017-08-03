@@ -3,7 +3,14 @@
 <ul>
   <% @posts.each do |post|%>
   <li>
-   <a target="_blank" href="<%= post.link%>"><%= post.link%></a> | <%= link_to post.description, post_path(post) %> | by <%= link_to post.user.username, user_path(post.user) %>
+   <a target="_blank" href="<%= post.link%>"><%= post.link%></a> |
+   <%= link_to post.description, post_path(post) %> |
+   by <%= link_to post.user.username, user_path(post.user) %> |
+   <% if post.votes %>
+   Votes: <%= post.votes %>
+   <% else %>
+   Be the first to vote it up!
+   <% end %>
   </li>
 
 <% end %>
