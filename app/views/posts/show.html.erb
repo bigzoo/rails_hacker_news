@@ -1,5 +1,11 @@
 <h3><a target="_blank" href="<%= @post.link%>"><%=@post.link%></a></h3>
 <h1><%= @post.description%></h1>
+  <% if @post.votes %>
+Votes: <%= @post.votes %>
+<% else %>
+<small>Be the first to vote it up!</small>
+<% end %><%= link_to ('<i class="material-icons blue-text">thumb_up</i>').html_safe, upvote_path(post:@post)%>
+
 <% if @post.comments.any?%>
 <ul>
 
