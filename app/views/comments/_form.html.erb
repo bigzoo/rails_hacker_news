@@ -1,0 +1,13 @@
+<%= render "layouts/errors", :object => @comment %>
+
+
+<%= form_for [@post,@comment] do |f| %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<%= f.select(:user_id) do %>
+  <% User.all.each do |usr| %>
+    <%= content_tag(:option, usr.username, value: usr.id) %>
+  <% end %>
+<% end %>
+<%= f.submit %>
+<% end %>
