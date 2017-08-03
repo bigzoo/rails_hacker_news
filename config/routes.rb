@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :comments
   end
   root 'posts#index'
+  get "/upvote" => "posts#upvote", :as => :upvote
 end
