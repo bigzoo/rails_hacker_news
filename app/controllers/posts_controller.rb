@@ -35,6 +35,13 @@ class PostsController < ApplicationController
     flash[:notice]= "Post Deleted Succesfully!"
     redirect_to posts_path
   end
+  def upvote
+    @post = Post.find(params[:post])
+    if @post.increment! :votes
+      flash[:notice]="Post Upvoted!"
+    end
+    redirect_to post_path(@post)
+  end
 
   private
   def post_params
