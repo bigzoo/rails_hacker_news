@@ -8,10 +8,10 @@ Votes: <%= @post.votes %>
 
 <% if @post.comments.any?%>
 <ul>
-
+<h4>Comments</h4>
 <% @post.comments.each do |comment| %>
 <li>
-  <%=comment.description%> | by <%= link_to comment.user.username, user_path(comment.user)%> | Votes: <%= comment.votes%>
+  <%=comment.description%> | by <%= link_to comment.user.username, user_path(comment.user)%>
 <% end %>
 </ul>
 <% else %>
