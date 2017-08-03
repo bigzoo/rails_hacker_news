@@ -12,7 +12,16 @@ class PostsController < ApplicationController
     end
   end
   def index
-    @posts = Post.all
+    posts = Post.all
+    posts.each do |post|
+      born = post.created_at
+      now = Time.now
+      age_s = now - born
+      age_m = age_s/60
+      rate = post.votes/age_m*0.1
+      post.update(ranking:rate)
+    end
+    @posts = Post.all.order('id ASC').reorder('ranking DESC')
   end
   def show
     @post = Post.find(params[:id])
